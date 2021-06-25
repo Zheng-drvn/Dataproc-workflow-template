@@ -1,0 +1,33 @@
+id: pyspark-workflow-template
+placement:
+  managed_cluster:
+    cluster_name: dataproc-cluster-zheng
+    config:
+      autoscaling_config: 
+        policy_uri: projects/sps-sb/regions/us-central1/autoscalingPolicies/policy-0625
+      config_bucket: dataproc-workflow-template-test
+      gce_cluster_config:
+        internalIpOnly: true
+        zone_uri: northamerica-northeast1-a
+        subnetwork_uri: subnet-dv
+        tags: [dataproc-test]
+      master_config:
+        num_instances: 1
+        machine_type_uri: n1-standard-4
+        disk_config:
+          boot_disk_size_gb: 100
+      worker_config:
+        num_instances: 2
+        machine_type_uri: n1-standard-4
+        disk_config:
+          boot_disk_size_gb: 100
+      software_config:
+        image_version: '1.4'
+
+jobs:
+- pyspark_job:
+    main_python_file_uri: gs://dataproc-workflow-template-test/pyspark_job/main.py
+    pythonFileUris:
+    - gs://dataproc-workflow-template-test/pyspark_job
+  step_id: test-workflow
+      
