@@ -3,8 +3,8 @@ placement:
   managed_cluster:
     cluster_name: dataproc-cluster-zheng
     config:
-      autoscaling_config: 
-        policy_uri: projects/sps-sb/regions/us-central1/autoscalingPolicies/policy-0625
+      # autoscaling_config: 
+      #   policy_uri: projects/sps-sb/regions/us-central1/autoscalingPolicies/policy-0625
       config_bucket: dataproc-workflow-template-test
       gce_cluster_config:
         internalIpOnly: true
